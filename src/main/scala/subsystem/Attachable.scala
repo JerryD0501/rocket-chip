@@ -28,11 +28,11 @@ trait HasPRCILocations extends HasLogicalHierarchy { this: LazyModule =>
 
 // TODO make this trait extend Dynamic itself and add the locations to anyLocationMap?
 trait HasLocations extends HasPRCILocations { this: LazyModule =>
-  val anyLocationMap = new LocationMap[Any]
+  val anyLocationMap = LocationMap.empty[Any]
   def selectDynamic(name: String): Any = anyLocationMap.selectDynamic(name)
   def updateDynamic(name: String)(value: Any): Unit = anyLocationMap.updateDynamic(name)(value)
 
-  val tlBusWrapperLocationMap = new LocationMap[TLBusWrapper]
+  val tlBusWrapperLocationMap = LocationMap.empty[TLBusWrapper]
   def locateTLBusWrapper(location: Location[TLBusWrapper]): TLBusWrapper = locateTLBusWrapper(location.name)
   def locateTLBusWrapper(name: String): TLBusWrapper = tlBusWrapperLocationMap.selectDynamic(name)
 }
