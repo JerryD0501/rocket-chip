@@ -12,7 +12,7 @@ import freechips.rocketchip.util._
 
 case object SubsystemDriveAsyncClockGroupsKey extends Field[Option[ClockGroupDriverParameters]](Some(ClockGroupDriverParameters(1)))
 case object AsyncClockGroupsKey extends Field[ClockGroupEphemeralNode](ClockGroupEphemeralNode()(ValName("async_clock_groups")))
-case class TLNetworkTopologyLocated(where: String) extends Field[Seq[CanInstantiateWithinContext with CanConnectWithinContext]]
+case class TLNetworkTopologyLocated(where: String) extends Field[Seq[CanInstantiateWithinContextThatHasLocations with CanConnectWithinContextThatHasLocations]]
 
 class HierarchicalLocation(override val name: String) extends Location[LazyScope](name)
 case object InTile extends HierarchicalLocation("InTile")

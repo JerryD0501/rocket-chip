@@ -139,7 +139,9 @@ case class TLBusWrapperCrossFromConnection
 class TLBusWrapperTopology(
   val instantiations: Seq[(Location[TLBusWrapper], TLBusWrapperInstantiationLike)],
   val connections: Seq[(Location[TLBusWrapper], Location[TLBusWrapper], TLBusWrapperConnectionLike)]
-) extends CanInstantiateWithinContext with CanConnectWithinContext {
+) extends CanInstantiateWithinContextThatHasLocations
+  with CanConnectWithinContextThatHasLocations
+{
   def instantiate(context: HasLocations)(implicit p: Parameters): Unit = {
     instantiations.foreach { case (loc, params) => params.instantiate(context, loc) }
   }

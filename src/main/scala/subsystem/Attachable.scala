@@ -37,11 +37,11 @@ trait HasLocations extends HasPRCILocations { this: LazyModule =>
   def locateTLBusWrapper(name: String): TLBusWrapper = tlBusWrapperLocationMap.selectDynamic(name)
 }
 
-trait CanInstantiateWithinContext {
+trait CanInstantiateWithinContextThatHasLocations {
   def instantiate(context: HasLocations)(implicit p: Parameters): Unit
 }
 
-trait CanConnectWithinContext {
+trait CanConnectWithinContextThatHasLocations {
   def connect(context: HasLocations)(implicit p: Parameters): Unit
 }
 
